@@ -1,6 +1,6 @@
 ﻿namespace TeleDataAnalyzerLib.MediaInfo
 {
-    public class AudioMediaData : MediaInfo
+    public class AudioMediaData : MediaData
     {
         public string Performer;
         public string Title;

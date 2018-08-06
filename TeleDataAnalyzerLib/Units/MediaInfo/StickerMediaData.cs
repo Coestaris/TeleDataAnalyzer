@@ -1,6 +1,6 @@
 ﻿namespace TeleDataAnalyzerLib.MediaInfo
 {
-    public class StickerMediaData : MediaInfo
+    public class StickerMediaData : MediaData
     {
         public char Emoji;
         public int Width;

@@ -2,6 +2,8 @@
 {
     public enum MediaType
     {
+        Photo,
+
         Sticker,
         Audio_file,
         Video_file,

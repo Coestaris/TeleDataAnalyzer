@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,19 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MediaInfo\AudioMediaData.cs" />
-    <Compile Include="Chat.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="MediaInfo\MediaInfo.cs" />
-    <Compile Include="MediaType.cs" />
-    <Compile Include="Message.cs" />
-    <Compile Include="PersonalChat.cs" />
+    <Compile Include="Units\MediaInfo\AudioMediaData.cs" />
+    <Compile Include="Units\Chat.cs" />
+    <Compile Include="Units\Group.cs" />
+    <Compile Include="Units\MediaInfo\MediaInfo.cs" />
+    <Compile Include="Units\MediaInfo\PhotoMediaData.cs" />
+    <Compile Include="Units\MediaType.cs" />
+    <Compile Include="Units\Message.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Units\PersonalChat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MediaInfo\StickerMediaData.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="MediaInfo\VideoMediaData.cs" />
-    <Compile Include="MediaInfo\VoiceMediaData.cs" />
+    <Compile Include="Units\MediaInfo\StickerMediaData.cs" />
+    <Compile Include="Units\User.cs" />
+    <Compile Include="Units\MediaInfo\VideoMediaData.cs" />
+    <Compile Include="Units\MediaInfo\VoiceMediaData.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

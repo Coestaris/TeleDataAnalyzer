@@ -1,6 +1,6 @@
 ﻿namespace TeleDataAnalyzerLib.MediaInfo
 {
-    public class VoiceMediaData : MediaInfo
+    public class VoiceMediaData : MediaData
     {
         public int Duration;
 

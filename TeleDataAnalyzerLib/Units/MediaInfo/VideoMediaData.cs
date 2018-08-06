@@ -2,7 +2,7 @@
 
 namespace TeleDataAnalyzerLib.MediaInfo
 {
-    public class VideoMediaData : MediaInfo
+    public class VideoMediaData : MediaData
     {
         public int Duration;
         public int Width;
