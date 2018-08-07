@@ -44,17 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParseTask.cs" />
-    <Compile Include="ParseTaskState.cs" />
+    <Compile Include="ParseTaskRunner.cs" />
+    <Compile Include="ParseTaskStatus.cs" />
+    <Compile Include="Tasks\ParseMessagesTask.cs" />
+    <Compile Include="Tasks\ParseJSONTask.cs" />
+    <Compile Include="Units\ChatType.cs" />
     <Compile Include="Units\MediaInfo\FileMediaData.cs" />
     <Compile Include="Units\MediaInfo\AudioMediaData.cs" />
     <Compile Include="Units\Chat.cs" />
-    <Compile Include="Units\Group.cs" />
     <Compile Include="Units\MediaInfo\MediaInfo.cs" />
     <Compile Include="Units\MediaInfo\PhotoMediaData.cs" />
     <Compile Include="Units\MediaType.cs" />
     <Compile Include="Units\Message.cs" />
     <Compile Include="Parser.cs" />
-    <Compile Include="Units\PersonalChat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Units\MediaInfo\StickerMediaData.cs" />
     <Compile Include="Units\User.cs" />

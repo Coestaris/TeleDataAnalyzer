@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TeleDataAnalyzerLib
 {
-    class ParseTaskState
+    public enum ParseTaskStatus
     {
+        Running,
+        Failed,
+        Ok,
+        Waiting,
+        Aborted
     }
 }

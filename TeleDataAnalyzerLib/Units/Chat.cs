@@ -4,7 +4,9 @@ namespace TeleDataAnalyzerLib
 {
     public class Chat
     {
+        public string Name;
         public List<Message> Messages;
-        public User Me;
+        public ChatType Type;
+        public List<string> Participants;
     }
 }
