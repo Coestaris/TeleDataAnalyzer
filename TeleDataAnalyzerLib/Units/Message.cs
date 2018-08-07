@@ -27,11 +27,15 @@ namespace TeleDataAnalyzerLib
         public bool IsGIF => MediaType == MediaType.Animation;
         public bool IsVoice => MediaType == MediaType.Voice_message;
         public bool IsVideoMessage => MediaType == MediaType.Video_message;
+        public bool IsPhoto => MediaType == MediaType.Photo;
+        public bool IsFile => MediaType == MediaType.File;
 
         public bool HasText => !string.IsNullOrEmpty(Text);
         public bool HasLinks => Links != null && Links.Count != 0;
         public bool IsEdited => Edited.Year != 1970;
+
         public bool IsForwarded => !string.IsNullOrEmpty(ForwardedFrom);
+
 
         public override string ToString()
         {

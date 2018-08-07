@@ -1,9 +1,11 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using TeleDataAnalyzerLib;
 using TeleDataAnalyzerLib.Tasks;
+using TeleDataAnalyzerLib.Tasks.Analyse;
 
 namespace TeleDataAnalyzer
 {
@@ -59,6 +61,7 @@ namespace TeleDataAnalyzer
             listBoxChatdataSelectChat.Items.Clear();
             listBoxChatdataSelectChat.Items.AddRange(
                 parser.Chats.Select(p => p.ToString()).ToArray());
+            listBoxChatdataSelectChat.SelectedIndex = 0;
 
             checkedListBoxUserDataSelectChats.Items.Clear();
             checkedListBoxUserDataSelectChats.Items.AddRange(
@@ -67,6 +70,46 @@ namespace TeleDataAnalyzer
             listBoxUserDataSelectUser.Items.Clear();
             listBoxUserDataSelectUser.Items.AddRange(
                 parser.GlobalUsers.ToArray());
+        }
+
+        private void buttonChatdata_Click(object sender, EventArgs e)
+        {
+            using (var package = new ExcelPackage(new System.IO.FileInfo("output.xlsx")))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(DateTime.Now.ToString());
+
+                ExcelWriter writer = new ExcelWriter()
+                {
+                    chat = parser.Chats[listBoxChatdataSelectChat.SelectedIndex],
+                    worksheet = worksheet
+                };
+
+                worksheet.DefaultRowHeight = 14;
+                worksheet.Column(1).Width = 44;
+                worksheet.Column(2).Width = 33;
+
+                writer.WriteString("Имя чата", writer.chat.Name);
+                writer.WriteString("Тип чата", writer.chat.Type.ToString());
+                writer.WriteString("Кол-во участников чата", writer.chat.Participants.Count);
+
+                using (var range = worksheet.Cells[1, 1, 3, 3])
+                {
+                    range.Style.Font.Bold = true;
+                }
+
+                writer.WriteString();
+
+                new ProgressDialog(
+                     new List<ParseTask>()
+                     {
+                        new GroupGeneralInfo(writer),
+                        new GroupUsersTable(writer)
+                     },
+                     parser
+                 ).ShowDialog();
+
+                package.Save();
+            }
         }
     }
 }

@@ -136,6 +136,7 @@
             this.buttonChatdata.TabIndex = 3;
             this.buttonChatdata.Text = "Collect";
             this.buttonChatdata.UseVisualStyleBackColor = true;
+            this.buttonChatdata.Click += new System.EventHandler(this.buttonChatdata_Click);
             // 
             // listBoxChatdataSelectChat
             // 
@@ -267,7 +268,7 @@
             this.buttonParse.UseVisualStyleBackColor = true;
             this.buttonParse.Click += new System.EventHandler(this.buttonParse_Click);
             // 
-            // panel1
+            // panelTotal
             // 
             this.panelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTotal.Controls.Add(this.panelUserData);
@@ -276,7 +277,7 @@
             this.panelTotal.Controls.Add(this.panelChatData);
             this.panelTotal.Enabled = false;
             this.panelTotal.Location = new System.Drawing.Point(12, 46);
-            this.panelTotal.Name = "panel1";
+            this.panelTotal.Name = "panelTotal";
             this.panelTotal.Size = new System.Drawing.Size(604, 483);
             this.panelTotal.TabIndex = 9;
             // 
