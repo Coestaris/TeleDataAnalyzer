@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParseTask.cs" />
+    <Compile Include="ParseTaskState.cs" />
+    <Compile Include="Units\MediaInfo\FileMediaData.cs" />
     <Compile Include="Units\MediaInfo\AudioMediaData.cs" />
     <Compile Include="Units\Chat.cs" />
     <Compile Include="Units\Group.cs" />

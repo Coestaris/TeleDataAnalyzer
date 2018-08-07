@@ -2,11 +2,11 @@
 {
     public class StickerMediaData : MediaData
     {
-        public char Emoji;
+        public string Emoji;
         public int Width;
         public int Height;
 
-        public StickerMediaData(char emoji, int width, int height)
+        public StickerMediaData(string emoji, int width, int height)
         {
             Type = MediaType.Sticker;
             Emoji = emoji;
