@@ -30,8 +30,8 @@
         {
             this.progressBarTotal = new System.Windows.Forms.ProgressBar();
             this.progressBarCurrent = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.labelCurrent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBarTotal
@@ -48,35 +48,37 @@
             this.progressBarCurrent.Size = new System.Drawing.Size(467, 23);
             this.progressBarCurrent.TabIndex = 1;
             // 
-            // label1
+            // labelTotal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(23, 22);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(0, 13);
+            this.labelTotal.TabIndex = 2;
             // 
-            // label2
+            // labelCurrent
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.labelCurrent.AutoSize = true;
+            this.labelCurrent.Location = new System.Drawing.Point(23, 75);
+            this.labelCurrent.Name = "labelCurrent";
+            this.labelCurrent.Size = new System.Drawing.Size(0, 13);
+            this.labelCurrent.TabIndex = 3;
             // 
             // ProgressDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 163);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelCurrent);
+            this.Controls.Add(this.labelTotal);
             this.Controls.Add(this.progressBarCurrent);
             this.Controls.Add(this.progressBarTotal);
+            this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ProgressDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressDialog";
+            this.Load += new System.EventHandler(this.ProgressDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,7 +88,7 @@
 
         private System.Windows.Forms.ProgressBar progressBarTotal;
         private System.Windows.Forms.ProgressBar progressBarCurrent;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.Label labelCurrent;
     }
 }

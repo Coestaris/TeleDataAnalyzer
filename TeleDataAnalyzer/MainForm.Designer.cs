@@ -49,8 +49,10 @@
             this.checkedListBoxUserDataSelectData = new System.Windows.Forms.CheckedListBox();
             this.openFileDialogPickFile = new System.Windows.Forms.OpenFileDialog();
             this.buttonParse = new System.Windows.Forms.Button();
+            this.panelTotal = new System.Windows.Forms.Panel();
             this.panelChatData.SuspendLayout();
             this.panelUserData.SuspendLayout();
+            this.panelTotal.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkedListBoxChatdataSelectData
@@ -103,9 +105,9 @@
             this.panelChatData.Controls.Add(this.buttonChatdata);
             this.panelChatData.Controls.Add(this.listBoxChatdataSelectChat);
             this.panelChatData.Controls.Add(this.checkedListBoxChatdataSelectData);
-            this.panelChatData.Location = new System.Drawing.Point(15, 67);
+            this.panelChatData.Location = new System.Drawing.Point(7, 33);
             this.panelChatData.Name = "panelChatData";
-            this.panelChatData.Size = new System.Drawing.Size(512, 227);
+            this.panelChatData.Size = new System.Drawing.Size(590, 205);
             this.panelChatData.TabIndex = 5;
             // 
             // labelChatdataSelectData
@@ -128,7 +130,7 @@
             // 
             // buttonChatdata
             // 
-            this.buttonChatdata.Location = new System.Drawing.Point(422, 195);
+            this.buttonChatdata.Location = new System.Drawing.Point(503, 166);
             this.buttonChatdata.Name = "buttonChatdata";
             this.buttonChatdata.Size = new System.Drawing.Size(75, 23);
             this.buttonChatdata.TabIndex = 3;
@@ -147,7 +149,7 @@
             // 
             this.radioButtonChatdata.AutoSize = true;
             this.radioButtonChatdata.Checked = true;
-            this.radioButtonChatdata.Location = new System.Drawing.Point(15, 44);
+            this.radioButtonChatdata.Location = new System.Drawing.Point(7, 10);
             this.radioButtonChatdata.Name = "radioButtonChatdata";
             this.radioButtonChatdata.Size = new System.Drawing.Size(71, 17);
             this.radioButtonChatdata.TabIndex = 6;
@@ -159,7 +161,7 @@
             // radioButtonUserData
             // 
             this.radioButtonUserData.AutoSize = true;
-            this.radioButtonUserData.Location = new System.Drawing.Point(15, 300);
+            this.radioButtonUserData.Location = new System.Drawing.Point(7, 244);
             this.radioButtonUserData.Name = "radioButtonUserData";
             this.radioButtonUserData.Size = new System.Drawing.Size(71, 17);
             this.radioButtonUserData.TabIndex = 7;
@@ -178,9 +180,9 @@
             this.panelUserData.Controls.Add(this.listBoxUserDataSelectUser);
             this.panelUserData.Controls.Add(this.checkedListBoxUserDataSelectData);
             this.panelUserData.Enabled = false;
-            this.panelUserData.Location = new System.Drawing.Point(15, 323);
+            this.panelUserData.Location = new System.Drawing.Point(7, 267);
             this.panelUserData.Name = "panelUserData";
-            this.panelUserData.Size = new System.Drawing.Size(512, 240);
+            this.panelUserData.Size = new System.Drawing.Size(590, 205);
             this.panelUserData.TabIndex = 6;
             // 
             // labelUserDataSelectData
@@ -220,7 +222,7 @@
             // 
             // buttonUserData
             // 
-            this.buttonUserData.Location = new System.Drawing.Point(422, 204);
+            this.buttonUserData.Location = new System.Drawing.Point(503, 170);
             this.buttonUserData.Name = "buttonUserData";
             this.buttonUserData.Size = new System.Drawing.Size(75, 23);
             this.buttonUserData.TabIndex = 3;
@@ -257,32 +259,46 @@
             // 
             // buttonParse
             // 
-            this.buttonParse.Location = new System.Drawing.Point(455, 44);
+            this.buttonParse.Location = new System.Drawing.Point(537, 13);
             this.buttonParse.Name = "buttonParse";
             this.buttonParse.Size = new System.Drawing.Size(75, 23);
             this.buttonParse.TabIndex = 8;
             this.buttonParse.Text = "Parse";
             this.buttonParse.UseVisualStyleBackColor = true;
+            this.buttonParse.Click += new System.EventHandler(this.buttonParse_Click);
+            // 
+            // panel1
+            // 
+            this.panelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTotal.Controls.Add(this.panelUserData);
+            this.panelTotal.Controls.Add(this.radioButtonUserData);
+            this.panelTotal.Controls.Add(this.radioButtonChatdata);
+            this.panelTotal.Controls.Add(this.panelChatData);
+            this.panelTotal.Enabled = false;
+            this.panelTotal.Location = new System.Drawing.Point(12, 46);
+            this.panelTotal.Name = "panel1";
+            this.panelTotal.Size = new System.Drawing.Size(604, 483);
+            this.panelTotal.TabIndex = 9;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 577);
+            this.ClientSize = new System.Drawing.Size(624, 539);
             this.Controls.Add(this.buttonParse);
-            this.Controls.Add(this.panelUserData);
-            this.Controls.Add(this.radioButtonUserData);
-            this.Controls.Add(this.radioButtonChatdata);
-            this.Controls.Add(this.panelChatData);
+            this.Controls.Add(this.panelTotal);
             this.Controls.Add(this.labelSourceJson);
             this.Controls.Add(this.buttonPickFilename);
             this.Controls.Add(this.textBoxInputFilename);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panelChatData.ResumeLayout(false);
             this.panelChatData.PerformLayout();
             this.panelUserData.ResumeLayout(false);
             this.panelUserData.PerformLayout();
+            this.panelTotal.ResumeLayout(false);
+            this.panelTotal.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,6 +327,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxUserDataSelectData;
         private System.Windows.Forms.OpenFileDialog openFileDialogPickFile;
         private System.Windows.Forms.Button buttonParse;
+        private System.Windows.Forms.Panel panelTotal;
     }
 }
 

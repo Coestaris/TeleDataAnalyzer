@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using TeleDataAnalyzerLib.MediaInfo;
 
 namespace TeleDataAnalyzerLib
 {
@@ -36,6 +33,7 @@ namespace TeleDataAnalyzerLib
         public const string MessKey_Media_Title = "title";
 
         public JObject Object { get; internal set; }
-
+        public List<Chat> Chats { get; internal set; }
+        public List<string> GlobalUsers { get; internal set; }
     }
 }

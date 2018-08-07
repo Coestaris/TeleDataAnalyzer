@@ -1,14 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TeleDataAnalyzerLib.Tasks
 {
-    class ParseJSONTask : ParseTask
+    public class ParseJSONTask : ParseTask
     {
         private string FileName;
 
@@ -26,6 +21,7 @@ namespace TeleDataAnalyzerLib.Tasks
         protected override void InnerRun()
         {
             parser.Object = JObject.Parse(File.ReadAllText(FileName));
+            InnerEnd();
         }
     }
 }

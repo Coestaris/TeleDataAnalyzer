@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace TeleDataAnalyzerLib
 {
     public abstract class ParseTask
     {
         public float SubTaskCurrentStep { get; protected set; }
+        public string SubtaskName { get; protected set; }
+
         public float CurrentStep { get; protected set; }
 
         public abstract string Name { get; }
         public TimeSpan Length { get; private set; }
 
-        public Exception Error { get; private set; }
+        public Exception Error { get; internal set; }
         public ParseTaskStatus Status { get; private set; } = ParseTaskStatus.Waiting;
 
         public DateTime StartTime { get; private set; }
@@ -43,6 +41,7 @@ namespace TeleDataAnalyzerLib
 
         public void Run(Parser parser)
         {
+            SubtaskName = Name;
             this.parser = parser;
             StartTime = DateTime.Now;
             Status = ParseTaskStatus.Running;

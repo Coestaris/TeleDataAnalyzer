@@ -7,6 +7,8 @@ namespace TeleDataAnalyzerLib
     public class ParseTaskRunner
     {
         public ParseTaskStatus Status { get; private set; } = ParseTaskStatus.Waiting;
+
+        public int index;
         private Thread workingThread;
         private Thread periodThread;
 
@@ -49,15 +51,18 @@ namespace TeleDataAnalyzerLib
         {
             Tasks = tasks;
             Status = ParseTaskStatus.Running;
-            int index = 0;
+            index = 0;
 
             if (AsyncTaskPeriodical != null)
             {
                 periodThread = new Thread(
                     p =>
                     {
-                        Thread.Sleep(UpdatePeriod);
-                        AsyncTaskPeriodical.Invoke(this, parser);
+                        while (true)
+                        {
+                            Thread.Sleep(UpdatePeriod);
+                            AsyncTaskPeriodical.Invoke(this, parser);
+                        }
                     });
                 periodThread.Start();
             }
@@ -68,10 +73,21 @@ namespace TeleDataAnalyzerLib
 
                 index++;
                 AsyncTaskСhanged?.Invoke(this, parser);
-                task.Run(parser);
-                AsyncTaskСhanged?.Invoke(this, parser);
 
-                if (task.Status != ParseTaskStatus.Ok)
+                Exception exception = null;
+                try
+                {
+                    task.Run(parser);
+                }
+                catch(Exception ex)
+                {
+                    exception = ex;
+                }
+                
+                AsyncTaskСhanged?.Invoke(this, parser);
+                task.Error = exception;
+
+                if (task.Status != ParseTaskStatus.Ok || exception != null)
                 {
                     FailedTaskIndex = index - 1;
                     Status = ParseTaskStatus.Failed;
