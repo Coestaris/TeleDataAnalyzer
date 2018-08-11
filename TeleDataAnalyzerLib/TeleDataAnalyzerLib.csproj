@@ -53,9 +53,14 @@
     <Compile Include="ParseTask.cs" />
     <Compile Include="ParseTaskRunner.cs" />
     <Compile Include="ParseTaskStatus.cs" />
+    <Compile Include="Tasks\Analyse\MonthUsageTask.cs" />
+    <Compile Include="Tasks\Analyse\HoursUsageTask.cs" />
+    <Compile Include="Tasks\Analyse\DayUsageTask.cs" />
     <Compile Include="Tasks\Analyse\ExcelWriter.cs" />
     <Compile Include="Tasks\Analyse\GroupUsersTable.cs" />
     <Compile Include="Tasks\Analyse\GroupGeneralInfo.cs" />
+    <Compile Include="Tasks\Analyse\TextStatisticsTask.cs" />
+    <Compile Include="Tasks\PostProcessTask.cs" />
     <Compile Include="Tasks\ParseMessagesTask.cs" />
     <Compile Include="Tasks\ParseJSONTask.cs" />
     <Compile Include="Units\ChatType.cs" />

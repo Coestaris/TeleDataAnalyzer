@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using TeleDataAnalyzerLib;
@@ -47,11 +48,18 @@ namespace TeleDataAnalyzer
 
         private void buttonParse_Click(object sender, EventArgs e)
         {
+            if(!File.Exists(FileName))
+            {
+                MessageBox.Show($"File \"{FileName}\" not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             new ProgressDialog(
                 new List<ParseTask>()
                 {
                     new ParseJSONTask(FileName),
-                    new ParseMessagesTask()
+                    new ParseMessagesTask(),
+                    new PostProcessTask()
                 }, 
                 parser
             ).ShowDialog();
@@ -74,42 +82,72 @@ namespace TeleDataAnalyzer
 
         private void buttonChatdata_Click(object sender, EventArgs e)
         {
-            using (var package = new ExcelPackage(new System.IO.FileInfo("output.xlsx")))
+            try
             {
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(DateTime.Now.ToString());
-
-                ExcelWriter writer = new ExcelWriter()
+                using (var package = new ExcelPackage(new System.IO.FileInfo("output.xlsx")))
                 {
-                    chat = parser.Chats[listBoxChatdataSelectChat.SelectedIndex],
-                    worksheet = worksheet
-                };
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(DateTime.Now.ToString());
 
-                worksheet.DefaultRowHeight = 14;
-                worksheet.Column(1).Width = 44;
-                worksheet.Column(2).Width = 33;
+                    ExcelWriter writer = new ExcelWriter()
+                    {
+                        chat = parser.Chats[listBoxChatdataSelectChat.SelectedIndex],
+                        worksheet = worksheet
+                    };
 
-                writer.WriteString("Имя чата", writer.chat.Name);
-                writer.WriteString("Тип чата", writer.chat.Type.ToString());
-                writer.WriteString("Кол-во участников чата", writer.chat.Participants.Count);
+                    worksheet.DefaultRowHeight = 14;
+                    worksheet.Column(1).Width = 44;
+                    worksheet.Column(2).Width = 33;
 
-                using (var range = worksheet.Cells[1, 1, 3, 3])
-                {
-                    range.Style.Font.Bold = true;
+                    writer.WriteString("Имя чата", writer.chat.Name);
+                    writer.WriteString("Тип чата", writer.chat.Type.ToString());
+                    writer.WriteString("Кол-во участников чата", writer.chat.Participants.Count);
+
+                    using (var range = worksheet.Cells[1, 1, 3, 3])
+                    {
+                        range.Style.Font.Bold = true;
+                    }
+
+                    writer.WriteString();
+
+                    new ProgressDialog(
+                         new List<ParseTask>()
+                         {
+                            new GroupGeneralInfo(writer),
+                            new GroupUsersTable(writer),
+                            new DayUsageTask(writer),
+                            new HoursUsageTask(writer),
+                            new MonthUsageTask(writer),
+                            new TextStatisticsTask(writer)
+                         },
+                         parser
+                     ).ShowDialog();
+
+                    package.Save();
                 }
-
-                writer.WriteString();
-
-                new ProgressDialog(
-                     new List<ParseTask>()
-                     {
-                        new GroupGeneralInfo(writer),
-                        new GroupUsersTable(writer)
-                     },
-                     parser
-                 ).ShowDialog();
-
-                package.Save();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void listBoxChatdataSelectChat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var chat = parser.Chats[listBoxChatdataSelectChat.SelectedIndex];
+
+            checkedListBoxChatdataSelectUsers.Items.Clear();
+            checkedListBoxChatdataSelectUsers.Items.AddRange(chat.Participants.ToArray());
+        }
+
+        private void listBoxUserDataSelectUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var user = parser.GlobalUsers[listBoxUserDataSelectUser.SelectedIndex];
+
+            checkedListBoxUserDataSelectChats.Items.Clear();
+            checkedListBoxUserDataSelectChats.Items.AddRange(parser.Chats
+                .FindAll(p => p.Participants.Contains(user))
+                .Select(p => p.ToString())
+                .ToArray());
         }
     }
 }

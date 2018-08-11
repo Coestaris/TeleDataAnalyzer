@@ -43,12 +43,12 @@ namespace TeleDataAnalyzerLib.Tasks.Analyse
             var animms = Writer.chat.Messages.FindAll(p => p.MediaType == MediaType.Animation);
             var stickers = Writer.chat.Messages.FindAll(p => p.MediaType == MediaType.Sticker);
 
-            string mostStricker = "";
+            IGrouping<string, Message> mostStricker = null;
 
             if(stickers.Count != 0)
             {
                 mostStricker = stickers.GroupBy(p => (p.MediaInfo as StickerMediaData).Emoji).
-                    OrderByDescending(p => p.Count()).First().Key;
+                    OrderByDescending(p => p.Count()).First();
             }
 
             double widhtAv = photos.Count == 0 ? 0 : photos.Average(p => (p.MediaInfo as PhotoMediaData).Width);
@@ -70,7 +70,7 @@ namespace TeleDataAnalyzerLib.Tasks.Analyse
             Writer.WriteString("Средняя длина видео", string.Format("{0:.00}s", videoAv));
             Writer.WriteString("Средняя длина видео-сообщений", string.Format("{0:.00}s", videoMessAv));
             Writer.WriteString("Средняя длина гифок", string.Format("{0:.00}s", animationAv));
-            Writer.WriteString("Самый популярный стикер (его смайлик)", mostStricker);
+            Writer.WriteString("Самый популярный стикер (его смайлик)", string.Format("{0} ({1} раз)", mostStricker.Key, mostStricker.Count()) ?? "");
             
             InnerEnd();
         }

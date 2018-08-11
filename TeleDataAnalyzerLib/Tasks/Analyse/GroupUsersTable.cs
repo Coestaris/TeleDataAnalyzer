@@ -107,6 +107,32 @@ namespace TeleDataAnalyzerLib.Tasks.Analyse
                     item.Sum(p => p.HasLinks ? p.Links.Count : 0).ToString(),
                     string.Format("{0:0.##}", item.Count() / (last - first).TotalDays));
             }
+
+            {
+                CurrentStep = counter++ / users.Count();
+
+                DateTime first = Writer.chat.Messages.First().Date;
+                DateTime last = Writer.chat.Messages.Last().Date;
+
+                Writer.WriteString(
+                    "TOTAL",
+                    first.ToString(),
+                    last.ToString(),
+                    ExcelWriter.ToPrettyFormat(last - first),
+                    Writer.chat.Messages.Count().ToString(),
+                    Writer.chat.Messages.Count(p => p.IsEdited).ToString(),
+                    string.Format("{0:0.##}%", Writer.chat.Messages.Count() / (float)Writer.chat.Messages.Count() * 100),
+                    Writer.chat.Messages.Count(p => p.IsPhoto).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsVoice).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsVideo).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsGIF).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsAudio).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsFile).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsVideoMessage).ToString(),
+                    Writer.chat.Messages.Count(p => p.IsSticker).ToString(),
+                    Writer.chat.Messages.Sum(p => p.HasLinks ? p.Links.Count : 0).ToString(),
+                    string.Format("{0:0.##}", Writer.chat.Messages.Count() / (last - first).TotalDays));
+            }
         }
     }
 }

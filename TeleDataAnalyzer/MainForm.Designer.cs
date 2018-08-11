@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBoxChatdataSelectData = new System.Windows.Forms.CheckedListBox();
             this.textBoxInputFilename = new System.Windows.Forms.TextBox();
             this.buttonPickFilename = new System.Windows.Forms.Button();
             this.labelSourceJson = new System.Windows.Forms.Label();
@@ -40,47 +39,41 @@
             this.radioButtonChatdata = new System.Windows.Forms.RadioButton();
             this.radioButtonUserData = new System.Windows.Forms.RadioButton();
             this.panelUserData = new System.Windows.Forms.Panel();
-            this.labelUserDataSelectData = new System.Windows.Forms.Label();
             this.labelUserDataSelectChats = new System.Windows.Forms.Label();
             this.labelUserDataSelectUser = new System.Windows.Forms.Label();
             this.checkedListBoxUserDataSelectChats = new System.Windows.Forms.CheckedListBox();
             this.buttonUserData = new System.Windows.Forms.Button();
             this.listBoxUserDataSelectUser = new System.Windows.Forms.ListBox();
-            this.checkedListBoxUserDataSelectData = new System.Windows.Forms.CheckedListBox();
             this.openFileDialogPickFile = new System.Windows.Forms.OpenFileDialog();
             this.buttonParse = new System.Windows.Forms.Button();
             this.panelTotal = new System.Windows.Forms.Panel();
+            this.checkedListBoxChatdataSelectUsers = new System.Windows.Forms.CheckedListBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panelChatData.SuspendLayout();
             this.panelUserData.SuspendLayout();
             this.panelTotal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // checkedListBoxChatdataSelectData
-            // 
-            this.checkedListBoxChatdataSelectData.FormattingEnabled = true;
-            this.checkedListBoxChatdataSelectData.Items.AddRange(new object[] {
-            "Общая инфа по чату",
-            "Таблица пользователей",
-            "Временная статистика чата",
-            "Таблица Аудио",
-            "Таблица ссылок",
-            "Таблица Стикеров"});
-            this.checkedListBoxChatdataSelectData.Location = new System.Drawing.Point(206, 35);
-            this.checkedListBoxChatdataSelectData.Name = "checkedListBoxChatdataSelectData";
-            this.checkedListBoxChatdataSelectData.Size = new System.Drawing.Size(291, 154);
-            this.checkedListBoxChatdataSelectData.TabIndex = 1;
             // 
             // textBoxInputFilename
             // 
             this.textBoxInputFilename.Location = new System.Drawing.Point(106, 15);
             this.textBoxInputFilename.Name = "textBoxInputFilename";
-            this.textBoxInputFilename.Size = new System.Drawing.Size(343, 20);
+            this.textBoxInputFilename.Size = new System.Drawing.Size(325, 20);
             this.textBoxInputFilename.TabIndex = 2;
             this.textBoxInputFilename.Text = "input.txt";
             // 
             // buttonPickFilename
             // 
-            this.buttonPickFilename.Location = new System.Drawing.Point(455, 15);
+            this.buttonPickFilename.Location = new System.Drawing.Point(437, 13);
             this.buttonPickFilename.Name = "buttonPickFilename";
             this.buttonPickFilename.Size = new System.Drawing.Size(75, 23);
             this.buttonPickFilename.TabIndex = 3;
@@ -100,29 +93,26 @@
             // panelChatData
             // 
             this.panelChatData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelChatData.Controls.Add(this.labelChatdataSelectData);
-            this.panelChatData.Controls.Add(this.labelChatdataSelectChat);
+            this.panelChatData.Controls.Add(this.splitContainer2);
             this.panelChatData.Controls.Add(this.buttonChatdata);
-            this.panelChatData.Controls.Add(this.listBoxChatdataSelectChat);
-            this.panelChatData.Controls.Add(this.checkedListBoxChatdataSelectData);
             this.panelChatData.Location = new System.Drawing.Point(7, 33);
             this.panelChatData.Name = "panelChatData";
-            this.panelChatData.Size = new System.Drawing.Size(590, 205);
+            this.panelChatData.Size = new System.Drawing.Size(561, 205);
             this.panelChatData.TabIndex = 5;
             // 
             // labelChatdataSelectData
             // 
             this.labelChatdataSelectData.AutoSize = true;
-            this.labelChatdataSelectData.Location = new System.Drawing.Point(203, 19);
+            this.labelChatdataSelectData.Location = new System.Drawing.Point(-3, 1);
             this.labelChatdataSelectData.Name = "labelChatdataSelectData";
-            this.labelChatdataSelectData.Size = new System.Drawing.Size(107, 13);
+            this.labelChatdataSelectData.Size = new System.Drawing.Size(89, 13);
             this.labelChatdataSelectData.TabIndex = 5;
-            this.labelChatdataSelectData.Text = "Select data to collect";
+            this.labelChatdataSelectData.Text = "Select chat users";
             // 
             // labelChatdataSelectChat
             // 
             this.labelChatdataSelectChat.AutoSize = true;
-            this.labelChatdataSelectChat.Location = new System.Drawing.Point(9, 17);
+            this.labelChatdataSelectChat.Location = new System.Drawing.Point(5, 1);
             this.labelChatdataSelectChat.Name = "labelChatdataSelectChat";
             this.labelChatdataSelectChat.Size = new System.Drawing.Size(61, 13);
             this.labelChatdataSelectChat.TabIndex = 4;
@@ -130,7 +120,7 @@
             // 
             // buttonChatdata
             // 
-            this.buttonChatdata.Location = new System.Drawing.Point(503, 166);
+            this.buttonChatdata.Location = new System.Drawing.Point(469, 177);
             this.buttonChatdata.Name = "buttonChatdata";
             this.buttonChatdata.Size = new System.Drawing.Size(75, 23);
             this.buttonChatdata.TabIndex = 3;
@@ -140,11 +130,13 @@
             // 
             // listBoxChatdataSelectChat
             // 
+            this.listBoxChatdataSelectChat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxChatdataSelectChat.FormattingEnabled = true;
-            this.listBoxChatdataSelectChat.Location = new System.Drawing.Point(12, 33);
+            this.listBoxChatdataSelectChat.Location = new System.Drawing.Point(0, 17);
             this.listBoxChatdataSelectChat.Name = "listBoxChatdataSelectChat";
-            this.listBoxChatdataSelectChat.Size = new System.Drawing.Size(178, 160);
+            this.listBoxChatdataSelectChat.Size = new System.Drawing.Size(177, 121);
             this.listBoxChatdataSelectChat.TabIndex = 2;
+            this.listBoxChatdataSelectChat.SelectedIndexChanged += new System.EventHandler(this.listBoxChatdataSelectChat_SelectedIndexChanged);
             // 
             // radioButtonChatdata
             // 
@@ -173,32 +165,18 @@
             // panelUserData
             // 
             this.panelUserData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelUserData.Controls.Add(this.labelUserDataSelectData);
-            this.panelUserData.Controls.Add(this.labelUserDataSelectChats);
-            this.panelUserData.Controls.Add(this.labelUserDataSelectUser);
-            this.panelUserData.Controls.Add(this.checkedListBoxUserDataSelectChats);
+            this.panelUserData.Controls.Add(this.splitContainer1);
             this.panelUserData.Controls.Add(this.buttonUserData);
-            this.panelUserData.Controls.Add(this.listBoxUserDataSelectUser);
-            this.panelUserData.Controls.Add(this.checkedListBoxUserDataSelectData);
             this.panelUserData.Enabled = false;
             this.panelUserData.Location = new System.Drawing.Point(7, 267);
             this.panelUserData.Name = "panelUserData";
-            this.panelUserData.Size = new System.Drawing.Size(590, 205);
+            this.panelUserData.Size = new System.Drawing.Size(561, 219);
             this.panelUserData.TabIndex = 6;
-            // 
-            // labelUserDataSelectData
-            // 
-            this.labelUserDataSelectData.AutoSize = true;
-            this.labelUserDataSelectData.Location = new System.Drawing.Point(323, 24);
-            this.labelUserDataSelectData.Name = "labelUserDataSelectData";
-            this.labelUserDataSelectData.Size = new System.Drawing.Size(107, 13);
-            this.labelUserDataSelectData.TabIndex = 6;
-            this.labelUserDataSelectData.Text = "Select data to collect";
             // 
             // labelUserDataSelectChats
             // 
             this.labelUserDataSelectChats.AutoSize = true;
-            this.labelUserDataSelectChats.Location = new System.Drawing.Point(140, 20);
+            this.labelUserDataSelectChats.Location = new System.Drawing.Point(3, 2);
             this.labelUserDataSelectChats.Name = "labelUserDataSelectChats";
             this.labelUserDataSelectChats.Size = new System.Drawing.Size(66, 13);
             this.labelUserDataSelectChats.TabIndex = 7;
@@ -207,7 +185,7 @@
             // labelUserDataSelectUser
             // 
             this.labelUserDataSelectUser.AutoSize = true;
-            this.labelUserDataSelectUser.Location = new System.Drawing.Point(10, 20);
+            this.labelUserDataSelectUser.Location = new System.Drawing.Point(3, 3);
             this.labelUserDataSelectUser.Name = "labelUserDataSelectUser";
             this.labelUserDataSelectUser.Size = new System.Drawing.Size(60, 13);
             this.labelUserDataSelectUser.TabIndex = 6;
@@ -215,15 +193,16 @@
             // 
             // checkedListBoxUserDataSelectChats
             // 
+            this.checkedListBoxUserDataSelectChats.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.checkedListBoxUserDataSelectChats.FormattingEnabled = true;
-            this.checkedListBoxUserDataSelectChats.Location = new System.Drawing.Point(143, 39);
+            this.checkedListBoxUserDataSelectChats.Location = new System.Drawing.Point(0, 18);
             this.checkedListBoxUserDataSelectChats.Name = "checkedListBoxUserDataSelectChats";
-            this.checkedListBoxUserDataSelectChats.Size = new System.Drawing.Size(174, 154);
+            this.checkedListBoxUserDataSelectChats.Size = new System.Drawing.Size(350, 139);
             this.checkedListBoxUserDataSelectChats.TabIndex = 4;
             // 
             // buttonUserData
             // 
-            this.buttonUserData.Location = new System.Drawing.Point(503, 170);
+            this.buttonUserData.Location = new System.Drawing.Point(469, 189);
             this.buttonUserData.Name = "buttonUserData";
             this.buttonUserData.Size = new System.Drawing.Size(75, 23);
             this.buttonUserData.TabIndex = 3;
@@ -232,26 +211,13 @@
             // 
             // listBoxUserDataSelectUser
             // 
+            this.listBoxUserDataSelectUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxUserDataSelectUser.FormattingEnabled = true;
-            this.listBoxUserDataSelectUser.Location = new System.Drawing.Point(12, 46);
+            this.listBoxUserDataSelectUser.Location = new System.Drawing.Point(0, 23);
             this.listBoxUserDataSelectUser.Name = "listBoxUserDataSelectUser";
-            this.listBoxUserDataSelectUser.Size = new System.Drawing.Size(125, 147);
+            this.listBoxUserDataSelectUser.Size = new System.Drawing.Size(177, 134);
             this.listBoxUserDataSelectUser.TabIndex = 2;
-            // 
-            // checkedListBoxUserDataSelectData
-            // 
-            this.checkedListBoxUserDataSelectData.FormattingEnabled = true;
-            this.checkedListBoxUserDataSelectData.Items.AddRange(new object[] {
-            "Общая инфа по чату",
-            "Таблица пользователей",
-            "Временная статистика чата",
-            "Таблица Аудио",
-            "Таблица ссылок",
-            "Таблица Стикеров"});
-            this.checkedListBoxUserDataSelectData.Location = new System.Drawing.Point(323, 39);
-            this.checkedListBoxUserDataSelectData.Name = "checkedListBoxUserDataSelectData";
-            this.checkedListBoxUserDataSelectData.Size = new System.Drawing.Size(174, 154);
-            this.checkedListBoxUserDataSelectData.TabIndex = 1;
+            this.listBoxUserDataSelectUser.SelectedIndexChanged += new System.EventHandler(this.listBoxUserDataSelectUser_SelectedIndexChanged);
             // 
             // openFileDialogPickFile
             // 
@@ -260,7 +226,7 @@
             // 
             // buttonParse
             // 
-            this.buttonParse.Location = new System.Drawing.Point(537, 13);
+            this.buttonParse.Location = new System.Drawing.Point(515, 13);
             this.buttonParse.Name = "buttonParse";
             this.buttonParse.Size = new System.Drawing.Size(75, 23);
             this.buttonParse.TabIndex = 8;
@@ -278,36 +244,90 @@
             this.panelTotal.Enabled = false;
             this.panelTotal.Location = new System.Drawing.Point(12, 46);
             this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Size = new System.Drawing.Size(604, 483);
+            this.panelTotal.Size = new System.Drawing.Size(578, 495);
             this.panelTotal.TabIndex = 9;
+            // 
+            // checkedListBoxChatdataSelectUsers
+            // 
+            this.checkedListBoxChatdataSelectUsers.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.checkedListBoxChatdataSelectUsers.FormattingEnabled = true;
+            this.checkedListBoxChatdataSelectUsers.Location = new System.Drawing.Point(0, 14);
+            this.checkedListBoxChatdataSelectUsers.Name = "checkedListBoxChatdataSelectUsers";
+            this.checkedListBoxChatdataSelectUsers.Size = new System.Drawing.Size(350, 124);
+            this.checkedListBoxChatdataSelectUsers.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Location = new System.Drawing.Point(13, 25);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listBoxUserDataSelectUser);
+            this.splitContainer1.Panel1.Controls.Add(this.labelUserDataSelectUser);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.checkedListBoxUserDataSelectChats);
+            this.splitContainer1.Panel2.Controls.Add(this.labelUserDataSelectChats);
+            this.splitContainer1.Size = new System.Drawing.Size(531, 157);
+            this.splitContainer1.SplitterDistance = 177;
+            this.splitContainer1.TabIndex = 8;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Location = new System.Drawing.Point(13, 33);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.listBoxChatdataSelectChat);
+            this.splitContainer2.Panel1.Controls.Add(this.labelChatdataSelectChat);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.checkedListBoxChatdataSelectUsers);
+            this.splitContainer2.Panel2.Controls.Add(this.labelChatdataSelectData);
+            this.splitContainer2.Size = new System.Drawing.Size(531, 138);
+            this.splitContainer2.SplitterDistance = 177;
+            this.splitContainer2.TabIndex = 6;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 539);
+            this.ClientSize = new System.Drawing.Size(601, 553);
             this.Controls.Add(this.buttonParse);
             this.Controls.Add(this.panelTotal);
             this.Controls.Add(this.labelSourceJson);
             this.Controls.Add(this.buttonPickFilename);
             this.Controls.Add(this.textBoxInputFilename);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TeleDataAnalyzer";
             this.panelChatData.ResumeLayout(false);
-            this.panelChatData.PerformLayout();
             this.panelUserData.ResumeLayout(false);
-            this.panelUserData.PerformLayout();
             this.panelTotal.ResumeLayout(false);
             this.panelTotal.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBoxChatdataSelectData;
         private System.Windows.Forms.TextBox textBoxInputFilename;
         private System.Windows.Forms.Button buttonPickFilename;
         private System.Windows.Forms.Label labelSourceJson;
@@ -319,16 +339,17 @@
         private System.Windows.Forms.RadioButton radioButtonChatdata;
         private System.Windows.Forms.RadioButton radioButtonUserData;
         private System.Windows.Forms.Panel panelUserData;
-        private System.Windows.Forms.Label labelUserDataSelectData;
         private System.Windows.Forms.Label labelUserDataSelectChats;
         private System.Windows.Forms.Label labelUserDataSelectUser;
         private System.Windows.Forms.CheckedListBox checkedListBoxUserDataSelectChats;
         private System.Windows.Forms.Button buttonUserData;
         private System.Windows.Forms.ListBox listBoxUserDataSelectUser;
-        private System.Windows.Forms.CheckedListBox checkedListBoxUserDataSelectData;
         private System.Windows.Forms.OpenFileDialog openFileDialogPickFile;
         private System.Windows.Forms.Button buttonParse;
         private System.Windows.Forms.Panel panelTotal;
+        private System.Windows.Forms.CheckedListBox checkedListBoxChatdataSelectUsers;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
