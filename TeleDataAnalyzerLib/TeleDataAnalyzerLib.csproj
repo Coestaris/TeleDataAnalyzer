@@ -53,6 +53,7 @@
     <Compile Include="ParseTask.cs" />
     <Compile Include="ParseTaskRunner.cs" />
     <Compile Include="ParseTaskStatus.cs" />
+    <Compile Include="Tasks\Analyse\LinksUsageTask.cs" />
     <Compile Include="Tasks\Analyse\MonthUsageTask.cs" />
     <Compile Include="Tasks\Analyse\HoursUsageTask.cs" />
     <Compile Include="Tasks\Analyse\DayUsageTask.cs" />

@@ -117,7 +117,8 @@ namespace TeleDataAnalyzer
                             new DayUsageTask(writer),
                             new HoursUsageTask(writer),
                             new MonthUsageTask(writer),
-                            new TextStatisticsTask(writer)
+                            new TextStatisticsTask(writer),
+                            new LinkUsageTask(writer)
                          },
                          parser
                      ).ShowDialog();
